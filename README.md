@@ -9,7 +9,13 @@ Uma lista de pares de hashes (hash calculado e hash esperado), separados por ví
 ## Saída
 Para cada par de hashes fornecido, o código imprime o resultado "Correto" ou "Inválido".
 
-## Resultado:
+## Exemplos:
+| Entrada     | Saída       |
+| ----------- | ----------- | 
+| abc123, abc123 | Correto | 
+| def456, def789 | Inválido |
+| 123abc, 123abc | Correto |
+| 456def,456def | Correto |
 
 ## Código
 ```python
@@ -49,6 +55,13 @@ Uma lista de números de portas separados por vírgula.
 
 ## Saída
 Uma lista de serviços correspondentes a essas portas.
+
+## Exemplos:
+| Entrada     | Saída       |
+| ----------- | ----------- | 
+| 22, 80, 443 | ['SSH', 'HTTP', 'HTTPS'] | 
+| 21, 53, 3306 | ['FTP', 'DNS', 'MySQL'] |
+| 23, 443, 8080 | ['Telnet', 'HTTPS', 'Desconhecido'] |
 
 ## Código
 ```python
@@ -120,6 +133,13 @@ Uma String contendo um conteúdo único representando o corpo do e-mail.
 ## Saída
 "Phishing" ou "Seguro" para cada e-mail.
 
+## Exemplos:
+| Entrada     | Saída       |
+| ----------- | ----------- | 
+| Ganhe um prêmio incrível hoje! | Classificação: Phishing | 
+| Não perca esta promoção exclusiva! | Classificação: Phishing |
+| Você está convidado para a reunião amanhã! | Classificação: Seguro |
+
 ## Código
 ```python
 import sys
@@ -172,6 +192,14 @@ O sistema deve retornar:
     O id_usuario que teve mais de 3 tentativas consecutivas de falha.
 
     Se nenhum usuário tiver mais de 3 tentativas de falha consecutivas, o sistema deve retornar a mensagem "Nenhum invasor detectado".
+
+## Exemplos:
+| Entrada     | Saída       |
+| ----------- | ----------- | 
+| user1:falha, user1:falha, user1:falha, user1:sucesso! | Nenhum invasor detectado | 
+| user2:falha, user2:falha, user2:falha, user2:falha | user2 |
+| user3:sucesso, user3:falha, user3:falha, user3:falha, user3:falha | user3 |
+
     
 ## Código
 ```python
@@ -226,7 +254,5 @@ def main():
     # Imprime o resultado
     print(resultado)
 
-
 if __name__ == "__main__":
     main()
-``
