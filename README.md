@@ -11,6 +11,7 @@ Para cada par de hashes fornecido, o código imprime o resultado "Correto" ou "I
 
 ## Resultado:
 
+## Código
 ```python
 
 def verificar_hashes(lista_hashes):
@@ -49,6 +50,7 @@ Uma lista de números de portas separados por vírgula.
 ## Saída
 Uma lista de serviços correspondentes a essas portas.
 
+## Código
 ```python
 import sys
 
@@ -118,6 +120,7 @@ Uma String contendo um conteúdo único representando o corpo do e-mail.
 ## Saída
 "Phishing" ou "Seguro" para cada e-mail.
 
+## Código
 ```python
 import sys
 
@@ -170,6 +173,7 @@ O sistema deve retornar:
 
     Se nenhum usuário tiver mais de 3 tentativas de falha consecutivas, o sistema deve retornar a mensagem "Nenhum invasor detectado".
     
+## Código
 ```python
 import sys
 a = int(sys.stdin.readline())
