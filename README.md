@@ -119,3 +119,42 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+# Verificando Phishing
+
+## Descrição
+Crie uma solução para analisar uma lista de e-mails recebidos, verificando padrões comuns de phishing nas mensagens. Se um e-mail contiver palavras suspeitas como "ganhe", "prêmio", "urgente", "desconto", "click" e "promoção" ele deve ser classificado como "Phishing" e "Seguro".
+
+## Entrada
+Uma String contendo um conteúdo único representando o corpo do e-mail.
+
+## Saída
+"Phishing" ou "Seguro" para cada e-mail.
+
+```python
+import sys
+
+def verificar_phishing(mensagem):
+    # Lista de palavras que indicam possíveis e-mails de phishing
+    palavras_suspeitas = ["ganhe", "prêmio", "urgente", "desconto", "click", "promoção"]
+    
+    # Converte a mensagem para minúsculas e verifica a presença de palavras suspeitas
+    mensagem_lower = mensagem.lower()
+    for palavra in palavras_suspeitas:
+        if palavra in mensagem_lower:
+            return "Phishing"
+    return "Seguro"
+
+def main():
+    # Lê o conteúdo do e-mail da entrada padrão
+    email_usuario = sys.stdin.readline().strip()
+    
+    # Verifica a classificação do e-mail
+    resultado = verificar_phishing(email_usuario)
+    
+    # Imprime a classificação do e-mail
+    print(f"Classificação: {resultado}")
+
+if __name__ == "__main__":
+    main()
+``
