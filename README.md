@@ -35,3 +35,87 @@ lista_hashes = hashes_usuario.split(";")
 
 # Chamar a função para verificar os hashes
 verificar_hashes(lista_hashes)
+
+```
+
+# Enumeração de serviços em um servidor
+
+## Descrição
+Desenvolva um sistema que simule a enumeração de serviços em um servidor, dado um conjunto de portas e serviços associados. Você deve receber uma lista de números de portas e, para cada porta, retornar o serviço associado. Se a porta não estiver no dicionário, retorna "Desconhecido".
+
+## Entrada
+Uma lista de números de portas separados por vírgula.
+
+## Saída
+Uma lista de serviços correspondentes a essas portas.
+
+```python
+import sys
+
+ports_services = {
+    20: 'FTP (Data Transfer)',
+    21: 'FTP',
+    22: 'SSH',
+    23: 'Telnet',
+    25: 'SMTP',
+    53: 'DNS',
+    67: 'DHCP (Server)',
+    68: 'DHCP (Client)',
+    69: 'TFTP',
+    80: 'HTTP',
+    110: 'POP3',
+    123: 'NTP',
+    137: 'NetBIOS-NS',
+    138: 'NetBIOS-DGM',
+    139: 'NetBIOS-SSN',
+    143: 'IMAP',
+    161: 'SNMP',
+    162: 'SNMP Trap',
+    179: 'BGP',
+    389: 'LDAP',
+    443: 'HTTPS',
+    445: 'SMB',
+    465: 'SMTP over SSL',
+    514: 'Syslog',
+    587: 'SMTP (Mail Submission)',
+    636: 'LDAPS',
+    989: 'FTPS (Data)',
+    990: 'FTPS (Control)',
+    993: 'IMAPS',
+    995: 'POP3S',
+    1433: 'Microsoft SQL Server',
+    1521: 'Oracle Database',
+    1723: 'PPTP',
+    2049: 'NFS',
+    2083: 'cPanel (Secure)',
+    2087: 'WHM (Secure)',
+    3306: 'MySQL',
+    3389: 'RDP',
+    5432: 'PostgreSQL',
+    5900: 'VNC',
+    5985: 'WinRM (HTTP)',
+    5986: 'WinRM (HTTPS)',
+    6379: 'Redis',
+    8080: 'Desconhecido',
+    8443: 'HTTPS Alternate',
+    9000: 'SonarQube'
+}
+
+def enumerate_services(ports):
+    services = []
+    for port in ports:
+        if port in ports_services:
+            services.append(ports_services[port])
+        else:
+            services.append("DESCONHECIDO!")
+    return services
+
+def main():
+    ports_input = sys.stdin.readline().strip()
+    ports = [int(port.strip()) for port in ports_input.split(',')]
+    services = enumerate_services(ports)
+    print(services)
+
+if __name__ == "__main__":
+    main()
+```
