@@ -35,4 +35,3 @@ lista_hashes = hashes_usuario.split(";")
 
 # Chamar a função para verificar os hashes
 verificar_hashes(lista_hashes)
-``
