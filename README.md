@@ -65,59 +65,58 @@ Uma lista de serviços correspondentes a essas portas.
 
 ## Código
 ```python
-import sys
-
-ports_services = {
-    20: 'FTP (Data Transfer)',
-    21: 'FTP',
-    22: 'SSH',
-    23: 'Telnet',
-    25: 'SMTP',
-    53: 'DNS',
-    67: 'DHCP (Server)',
-    68: 'DHCP (Client)',
-    69: 'TFTP',
-    80: 'HTTP',
-    110: 'POP3',
-    123: 'NTP',
-    143: 'IMAP',
-    161: 'SNMP',
-    162: 'SNMP Trap',
-    179: 'BGP',
-    443: 'HTTPS',
-    445: 'SMB',
-    465: 'SMTP over SSL',
-    514: 'Syslog',
-    587: 'SMTP (Mail Submission)',
-    636: 'LDAPS',
-    989: 'FTPS (Data)',
-    990: 'FTPS (Control)',
-    993: 'IMAPS',
-    995: 'POP3S',
-    2049: 'NFS',
-    2083: 'cPanel (Secure)',
-    3306: 'MySQL',
-    3389: 'RDP',
-    5432: 'PostgreSQL',
-    6379: 'Redis',
-    8080: 'Desconhecido'
+port_services = {
+    21: "FTP",      # Serviço de transferência de arquivos
+    22: "SSH",      # Secure Shell (acesso remoto seguro)
+    23: "Telnet",   # Protocolo de acesso remoto inseguro
+    25: "SMTP",     # Serviço de envio de emails
+    53: "DNS",      # Serviço de tradução de nomes de domínio
+    80: "HTTP",     # Protocolo de transferência de hipertexto (web)
+    110: "POP3",    # Serviço de recebimento de emails
+    143: "IMAP",    # Serviço de recebimento de emails com suporte a pastas
+    443: "HTTPS",   # Protocolo seguro de transferência de hipertexto
+    3306: "MySQL",  # Banco de dados MySQL
+    3389: "RDP",    # Remote Desktop Protocol (Acesso remoto no Windows)
+    5432: "PostgreSQL", # Banco de dados PostgreSQL
+    6379: "Redis"   # Banco de dados Redis
 }
 
+# Função que realiza a enumeração de serviços
 def enumerate_services(ports):
+    # Inicializamos uma lista para armazenar os serviços correspondentes
     services = []
+    
+    # Iteramos sobre cada porta fornecida na lista de portas
     for port in ports:
-        if port in ports_services:
-            services.append(ports_services[port])
+        # Verificamos se a porta existe no dicionário de serviços
+        if port in port_services:
+            # Se existir, adicionamos o serviço correspondente à lista de serviços
+            services.append(port_services[port])
         else:
-            services.append("DESCONHECIDO!")
+            # Se a porta não estiver mapeada, adicionamos "Desconhecido"
+            services.append("Desconhecido")
+    
+    # Retornamos a lista de serviços
     return services
 
+# Função principal que lida com a entrada do usuário e exibe o resultado
 def main():
-    ports_input = sys.stdin.readline().strip()
-    ports = [int(port.strip()) for port in ports_input.split(',')]
+    # Solicitamos a entrada do usuário
+    ports_input = input()
+    
+    # Convertendo a string de entrada para uma lista de inteiros (números de portas)
+    ports = []
+    for port in ports_input.split(","):
+        # Removemos espaços em branco e convertimos para inteiro
+        ports.append(int(port.strip()))
+    
+    # Chamamos a função de enumeração para obter a lista de serviços correspondentes
     services = enumerate_services(ports)
+    
+    # Exibimos os serviços encontrados
     print(services)
 
+# Certificamos que o código seja executado apenas se este arquivo for executado diretamente
 if __name__ == "__main__":
     main()
 ```
